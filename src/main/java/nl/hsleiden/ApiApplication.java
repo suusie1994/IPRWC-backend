@@ -1,5 +1,6 @@
 package nl.hsleiden;
 
+import com.github.arteam.jdbi3.JdbiFactory;
 import com.google.inject.Module;
 import com.hubspot.dropwizard.guice.GuiceBundle.Builder;
 import com.hubspot.dropwizard.guice.GuiceBundle;
@@ -17,6 +18,7 @@ import nl.hsleiden.model.User;
 import nl.hsleiden.service.AuthenticationService;
 import org.eclipse.jetty.servlet.FilterHolder;
 import org.glassfish.jersey.server.filter.RolesAllowedDynamicFeature;
+import org.jdbi.v3.core.Jdbi;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -55,9 +57,12 @@ public class ApiApplication extends Application<ApiConfiguration>
         name = configuration.getApiName();
         
         logger.info(String.format("Set API name to %s", name));
-        
+        final JdbiFactory factory = new JdbiFactory();
+        final Jdbi jdbi = factory.build(environment, configuration.getDataSourceFactory(), "postgresql");
         setupAuthentication(environment);
         configureClientFilter(environment);
+        environment.jersey().register(environment);
+
     }
     
     private GuiceBundle createGuiceBundle(Class<ApiConfiguration> configurationClass, Module module)
