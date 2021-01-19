@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="1" author="Suzanne">
+        <createTable tableName="users">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="username" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <createTable tableName="user_roles">
+            <column name="user_id" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="roles" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <insert tableName="users">
+            <column name="username" value="test1"/>
+            <column name="password" value="test123"/>
+        </insert>
+        <insert tableName="users">
+            <column name="username" value="test2"/>
+            <column name="password" value="test123"/>
+        </insert>
+        <insert tableName="user_roles">
+            <column name="user_id" value="1"/>
+            <column name="roles" value="CUSTOMER"/>
+        </insert>
+        <insert tableName="user_roles">
+            <column name="user_id" value="2"/>
+            <column name="roles" value="CUSTOMER"/>
+        </insert>
+        <insert tableName="user_roles">
+            <column name="user_id" value="2"/>
+            <column name="roles" value="ADMIN"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="2" author="Suzanne">
+        <createTable tableName="customers">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="firstName" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="lastName" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="emailAddress" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="address" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="zipcode" type="varchar(7)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="city" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="phoneNumber" type="varchar(15)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <createTable tableName="orders">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="customer_id" type="int">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <createTable tableName="order_details">
+            <column name="order_id" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="product_id" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="amount" type="int">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <createTable tableName="products">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="amount" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="price" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="image" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <createTable tableName="customers_users">
+            <column name="user_id" type="int">
+                <!-- -->
+            </column>
+            <column name="customer_id" type="int">
+                <!-- -->
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint
+                baseTableName="orders"
+                baseColumnNames="customer_id"
+                constraintName="fk_customer"
+                referencedTableName="customers"
+                referencedColumnNames="id"/>
+        <addForeignKeyConstraint
+                baseTableName="order_details"
+                baseColumnNames="order_id"
+                constraintName="fk_order"
+                referencedTableName="orders"
+                referencedColumnNames="id"/>
+        <addForeignKeyConstraint
+                baseTableName="order_details"
+                baseColumnNames="product_id"
+                constraintName="fk_product"
+                referencedTableName="products"
+                referencedColumnNames="id"/>
+        <addForeignKeyConstraint
+                baseTableName="customers_users"
+                baseColumnNames="user_id"
+                constraintName="fk_user"
+                referencedTableName="users"
+                referencedColumnNames="id"/>
+        <addForeignKeyConstraint
+                baseTableName="customers_users"
+                baseColumnNames="customer_id"
+                constraintName="fk_customer_user"
+                referencedTableName="customers"
+                referencedColumnNames="id"/>
+    </changeSet>
+    <changeSet id="3" author="Suzanne">
+        <createTable tableName="cart">
+            <column name="product_id" type="int">
+                <!-- -->
+            </column>
+            <column name="user_id" type="int">
+                <!-- -->
+            </column>
+            <column name="amount" type="int">
+                <!-- -->
+            </column>
+        </createTable>
+        <addForeignKeyConstraint
+                baseTableName="cart"
+                baseColumnNames="product_id"
+                constraintName="fk_cart_product"
+                referencedTableName="products"
+                referencedColumnNames="id"/>
+        <addForeignKeyConstraint
+                baseTableName="cart"
+                baseColumnNames="user_id"
+                constraintName="fk_cart_user"
+                referencedTableName="users"
+                referencedColumnNames="id"/>
+    </changeSet>
+
+</databaseChangeLog>

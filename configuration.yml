@@ -1,23 +1,19 @@
-apiName: "Peters API"
+apiName: "Kerstwebshop API"
 
 assets:
   mappings:
     /assets: /
   overrides:
-    /: ../workshop-client/
+    /: ../client/dist/
 
 server:
   rootPath: /api/*
-  adminContextPath: /admin
   applicationConnectors:
     - type: http
       port: 8080
-  adminConnectors:
-    - type: http
-      port: 8081
 
 database:
   driverClass: org.postgresql.Driver
   user: postgres
   password: postgres
-  url: jdbc:postgresql://localhost:5432/kerstwebshop
+  url: jdbc:postgresql://localhost:5432/testDatabase
