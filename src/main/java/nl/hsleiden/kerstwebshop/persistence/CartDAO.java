@@ -6,6 +6,7 @@ import org.hibernate.SessionFactory;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
+import java.util.List;
 
 @Singleton
 public class CartDAO extends AbstractDAO<Cart> {
@@ -15,7 +16,19 @@ public class CartDAO extends AbstractDAO<Cart> {
         super(sessionFactory);
     }
 
-    public Cart findByCustomerId(int customerId) {
-        return (Cart) query("SELECT c from Cart c WHERE customer_id =" + customerId);
+    public List<Cart> findByCustomerId(int customerId) {
+        return query("SELECT c FROM Cart c WHERE customer_id =" + customerId).list();
+    }
+
+    public List<Cart> findAll() {
+        return query("SELECT c FROM Cart c").list();
+    }
+
+    public Cart save(Cart cart) {
+        return persist(cart);
+    }
+
+    public void delete(Cart cart) {
+        currentSession().delete(cart);
     }
 }

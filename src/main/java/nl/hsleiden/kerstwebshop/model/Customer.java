@@ -61,12 +61,12 @@ public class Customer {
     @JsonView(View.Public.class)
     private String phoneNumber;
 
-//    @OneToOne
-//    @JoinTable(name = "customers_users",
-//            joinColumns = { @JoinColumn(name = "customer_id")},
-//            inverseJoinColumns = {@JoinColumn(name = "user_id")})
-//    @JsonIgnore
-//    private User user;
+    @OneToOne
+    @JoinTable(name = "customers_users",
+            joinColumns = { @JoinColumn(name = "customer_id")},
+            inverseJoinColumns = {@JoinColumn(name = "user_id")})
+    @JsonIgnore
+    private User user;
 
 //    @OneToMany
 //    @JoinTable(name = "orders",
@@ -156,5 +156,13 @@ public class Customer {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
