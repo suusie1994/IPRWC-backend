@@ -27,9 +27,10 @@ public class Order {
     @JsonView(View.Public.class)
     private Timestamp date;
 
-    @OneToOne
-    @JoinColumn(name = "customer_id")
-    private Customer customer;
+//    @OneToOne
+//    @JoinColumn(name = "customer_id")
+//    @JsonProperty
+//    private Customer customer;
 
     @ElementCollection
     @CollectionTable(name = "order_details",
@@ -45,13 +46,13 @@ public class Order {
     public Order(
             int id,
             Timestamp date,
-            Customer customer
-//            List <OrderDetail> orderitems
+//            Customer customer,
+            List <OrderDetail> orderitems
     ) {
         this.id = id;
         this.date = date;
-        this.customer = customer;
-//        this.orderitems = orderitems;
+//        this.customer = customer;
+        this.orderitems = orderitems;
     }
 
     public int getId() {
@@ -70,13 +71,13 @@ public class Order {
         this.date = date;
     }
 
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
+//    public Customer getCustomer() {
+//        return customer;
+//    }
+//
+//    public void setCustomer(Customer customer) {
+//        this.customer = customer;
+//    }
 
     public List <OrderDetail> getOrderitems() {
         return orderitems;

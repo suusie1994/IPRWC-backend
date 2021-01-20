@@ -16,6 +16,9 @@ public class CartDAO extends AbstractDAO<Cart> {
         super(sessionFactory);
     }
 
+    public Cart findById(int id) {
+        return get(id);
+    }
     public List<Cart> findByCustomerId(int customerId) {
         return query("SELECT c FROM Cart c WHERE customer_id =" + customerId).list();
     }
@@ -28,7 +31,8 @@ public class CartDAO extends AbstractDAO<Cart> {
         return persist(cart);
     }
 
-    public void delete(Cart cart) {
+    public void delete(int id) {
+        Cart cart = this.findById(id);
         currentSession().delete(cart);
     }
 }

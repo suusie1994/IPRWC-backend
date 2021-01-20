@@ -12,12 +12,17 @@ import java.io.Serializable;
 public class Cart implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    @JsonProperty
+    @JsonView(View.Public.class)
+    private int id;
+
     @Column(name = "product_id", nullable = false)
     @JsonProperty
     @JsonView(View.Public.class)
     private int productId;
 
-    @Id
     @Column(name = "user_id", nullable = false)
     @JsonProperty
     @JsonView(View.Public.class)
@@ -29,6 +34,14 @@ public class Cart implements Serializable {
     private int amount;
 
     public Cart() {}
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public int getProductId() {
         return productId;

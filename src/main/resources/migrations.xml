@@ -157,6 +157,7 @@
                 referencedTableName="customers"
                 referencedColumnNames="id"/>
     </changeSet>
+
     <changeSet id="3" author="Suzanne">
         <createTable tableName="cart">
             <column name="product_id" type="int">
@@ -183,4 +184,20 @@
                 referencedColumnNames="id"/>
     </changeSet>
 
+    <changeSet id="4" author="Suzanne">
+        <addColumn tableName="cart">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="5" author="Suzanne">
+        <renameColumn tableName="customers" oldColumnName="emailAddress" newColumnName="emailaddress"/>
+    </changeSet>
+    <changeSet id="6" author="Suzanne">
+        <renameColumn tableName="customers" oldColumnName="firstName" newColumnName="firstname"/>
+        <renameColumn tableName="customers" oldColumnName="lastName" newColumnName="lastname"/>
+        <renameColumn tableName="customers" oldColumnName="phoneNumber" newColumnName="phonenumber"/>
+    </changeSet>
 </databaseChangeLog>

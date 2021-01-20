@@ -1,5 +1,6 @@
 package nl.hsleiden.kerstwebshop.resource;
 
+import com.codahale.metrics.annotation.Timed;
 import com.fasterxml.jackson.annotation.JsonView;
 import io.dropwizard.auth.Auth;
 import io.dropwizard.hibernate.UnitOfWork;
@@ -8,7 +9,9 @@ import nl.hsleiden.kerstwebshop.model.User;
 import nl.hsleiden.kerstwebshop.persistence.UserDAO;
 import nl.hsleiden.kerstwebshop.service.UserService;
 import nl.hsleiden.kerstwebshop.View;
+import nl.hsleiden.kerstwebshop.shared.Role;
 
+import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import javax.validation.Valid;
@@ -58,5 +61,34 @@ public class UserResource {
     @UnitOfWork
     public Optional<User> findById(@PathParam("id")IntParam id){
         return userDAO.findById(id.get());
+    }
+
+    @PUT
+    @Path("/create")
+    @JsonView(View.Public.class)
+    @Timed
+    @UnitOfWork
+    public User create(@Valid User user) {
+        return this.service.create(user);
+    }
+
+    @POST
+    @Path("/update")
+    @RolesAllowed({Role.ADMIN, Role.CUSTOMER})
+    @JsonView(View.Public.class)
+    @Timed
+    @UnitOfWork
+    public User update(@Valid User user) {
+        return this.service.update(user);
+    }
+
+    @DELETE
+    @Path("/{id}")
+    @RolesAllowed({Role.ADMIN, Role.CUSTOMER})
+    @JsonView(View.Public.class)
+    @Timed
+    @UnitOfWork
+    public void delete(@PathParam("id") int id) {
+        this.service.remove(id);
     }
 }

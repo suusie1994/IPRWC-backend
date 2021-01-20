@@ -3,6 +3,7 @@ package nl.hsleiden.kerstwebshop.service;
 import nl.hsleiden.kerstwebshop.model.Customer;
 import nl.hsleiden.kerstwebshop.persistence.CustomerDAO;
 
+import javax.inject.Inject;
 import javax.inject.Singleton;
 
 @Singleton
@@ -10,6 +11,7 @@ public class CustomerService {
 
     private final CustomerDAO dao;
 
+    @Inject
     public CustomerService(CustomerDAO dao) {
         this.dao = dao;
     }

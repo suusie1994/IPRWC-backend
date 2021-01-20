@@ -32,7 +32,7 @@ public class CartService {
         return dao.save(cart);
     }
 
-    public void remove(Cart cart) {
-        dao.delete(cart);
+    public void remove(int id) {
+        dao.delete(id);
     }
 }

@@ -30,6 +30,10 @@ public class UserService {
     public User update(User user) {
         return dao.save(user);
     }
+    public void remove(int id) {
+        User user = this.getUserById(id);
+        dao.delete(user);
+    }
 
     public User getUserById(int id) {
         Optional<User> user = dao.findById(id);

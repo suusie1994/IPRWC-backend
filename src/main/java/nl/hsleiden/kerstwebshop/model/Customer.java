@@ -7,10 +7,9 @@ import nl.hsleiden.kerstwebshop.View;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
-@Table(name = "customers")
+@Table(name = "customers", schema = "public")
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,7 +30,7 @@ public class Customer {
     @JsonView(View.Public.class)
     private String lastname;
 
-    @Column(name = "emailAddress", nullable = false)
+    @Column(name = "emailaddress", nullable = false)
     @Length(min = 1, max = 255)
     @JsonProperty
     @JsonView(View.Public.class)
@@ -55,7 +54,7 @@ public class Customer {
     @JsonView(View.Public.class)
     private String city;
 
-    @Column(name = "phoneNumber", nullable = false)
+    @Column(name = "phonenumber", nullable = false)
     @Length(min = 1, max = 15)
     @JsonProperty
     @JsonView(View.Public.class)
