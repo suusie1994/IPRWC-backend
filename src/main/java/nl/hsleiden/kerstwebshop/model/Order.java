@@ -30,12 +30,15 @@ public class Order {
     @OneToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;
-//
-//    @ElementCollection
-//    @CollectionTable(name = "order_details", joinColumns = @JoinColumn(name = "id", referencedColumnName = "order_id"))
-//    @JsonProperty
-//    @JsonView(View.Public.class)
-//    private List<OrderDetail> orderitems;
+
+    @ElementCollection
+    @CollectionTable(name = "order_details",
+            joinColumns = @JoinColumn(name = "order_id",
+                    referencedColumnName = "id")
+    )
+    @JsonProperty
+    @JsonView(View.Public.class)
+    private List<OrderDetail> orderitems;
 
     public Order() {}
 
@@ -75,11 +78,11 @@ public class Order {
         this.customer = customer;
     }
 
-//    public List <OrderDetail> getOrderitems() {
-//        return orderitems;
-//    }
-//
-//    public void setOrderitems(List <OrderDetail> orderitems) {
-//        this.orderitems = orderitems;
-//    }
+    public List <OrderDetail> getOrderitems() {
+        return orderitems;
+    }
+
+    public void setOrderitems(List <OrderDetail> orderitems) {
+        this.orderitems = orderitems;
+    }
 }

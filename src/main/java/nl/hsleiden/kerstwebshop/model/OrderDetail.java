@@ -14,10 +14,10 @@ public class OrderDetail {
     @JsonView(View.Public.class)
     private int productId;
 
-    @Column(name = "order_id", nullable = false)
-    @JsonProperty
-    @JsonView(View.Public.class)
-    private int orderId;
+//    @Column(name = "order_id", nullable = false)
+//    @JsonProperty
+//    @JsonView(View.Public.class)
+//    private int orderId;
 
     @Column(name = "amount", nullable = false)
     @JsonProperty
@@ -35,13 +35,13 @@ public class OrderDetail {
         this.productId = productId;
     }
 
-    public int getOrderId() {
-        return orderId;
-    }
-
-    public void setOrderId(int orderId) {
-        this.orderId = orderId;
-    }
+//    public int getOrderId() {
+//        return orderId;
+//    }
+//
+//    public void setOrderId(int orderId) {
+//        this.orderId = orderId;
+//    }
 
     public int getAmount() {
         return amount;
