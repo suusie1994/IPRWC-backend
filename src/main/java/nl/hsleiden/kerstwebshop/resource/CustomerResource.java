@@ -1,6 +1,7 @@
 package nl.hsleiden.kerstwebshop.resource;
 
 import com.codahale.metrics.annotation.Timed;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonView;
 import io.dropwizard.hibernate.UnitOfWork;
 import nl.hsleiden.kerstwebshop.View;
@@ -56,7 +57,10 @@ public class CustomerResource {
     @JsonView(View.Public.class)
     @Timed
     @UnitOfWork
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     public Customer create(@Valid Customer customer) {
+        //userid ophalen??
         return this.service.create(customer);
     }
 

@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Table(name = "customers", schema = "public")
 public class Customer {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     @JsonProperty
     @JsonView(View.Public.class)
@@ -60,12 +60,12 @@ public class Customer {
     @JsonView(View.Public.class)
     private String phoneNumber;
 
-    @OneToOne
-    @JoinTable(name = "customers_users",
-            joinColumns = { @JoinColumn(name = "customer_id")},
-            inverseJoinColumns = {@JoinColumn(name = "user_id")})
-    @JsonIgnore
-    private User user;
+//    @OneToOne
+//    @JoinTable(name = "customers_users",
+//            joinColumns = { @JoinColumn(name = "customer_id")},
+//            inverseJoinColumns = {@JoinColumn(name = "user_id")})
+//    @JsonIgnore
+//    private User user;
 
 //    @OneToMany
 //    @JoinTable(name = "orders",
@@ -157,11 +157,11 @@ public class Customer {
         this.phoneNumber = phoneNumber;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
+//    public User getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(User user) {
+//        this.user = user;
+//    }
 }

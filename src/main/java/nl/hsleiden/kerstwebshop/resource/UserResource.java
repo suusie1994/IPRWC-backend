@@ -1,6 +1,7 @@
 package nl.hsleiden.kerstwebshop.resource;
 
 import com.codahale.metrics.annotation.Timed;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonView;
 import io.dropwizard.auth.Auth;
 import io.dropwizard.hibernate.UnitOfWork;
@@ -43,6 +44,7 @@ public class UserResource {
 
     @GET
     @Path("/me")
+    @JsonProperty
     @JsonView(View.Protected.class)
     public User getMe(@Auth User user) {
         return user;
