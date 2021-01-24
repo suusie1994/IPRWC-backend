@@ -200,4 +200,97 @@
         <renameColumn tableName="customers" oldColumnName="lastName" newColumnName="lastname"/>
         <renameColumn tableName="customers" oldColumnName="phoneNumber" newColumnName="phonenumber"/>
     </changeSet>
+
+    <changeSet id="7" author="Suzanne">
+        <insert tableName="products">
+            <column name="id" value="0"/>
+            <column name="amount" value="10"/>
+            <column name="name" value="Kerstboom"/>
+            <column name="description" value="Een mooie kerstboom die lang zijn naalden vast houd!"/>
+            <column name="price" value="14,99"/>
+            <column name="image"
+                    value="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Arbol_Navidad_01.jpg/800px-Arbol_Navidad_01.jpg"/>
+        </insert>
+        <insert tableName="products">
+            <column name="id" value="1"/>
+            <column name="amount" value="25"/>
+            <column name="name" value="Kerstballen"/>
+            <column name="description" value="Leuke rode kerstbal in de vorm van een beer!"/>
+            <column name="price" value="4,99"/>
+            <column name="image"
+                    value="https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Christmas_ornament_-_teddy_bear.JPG/800px-Christmas_ornament_-_teddy_bear.JPG"/>
+        </insert>
+        <insert tableName="products">
+            <column name="id" value="2"/>
+            <column name="amount" value="5"/>
+            <column name="name" value="Kerststal"/>
+            <column name="description" value="Originele kerststal!"/>
+            <column name="price" value="24,99"/>
+            <column name="image"
+                    value="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Weihnachskrippe.jpg/800px-Weihnachskrippe.jpg"/>
+        </insert>
+        <insert tableName="products">
+            <column name="id" value="3"/>
+            <column name="amount" value="12"/>
+            <column name="name" value="Kerststukje"/>
+            <column name="description" value="Eenvoudig maar leuk kerststukje!"/>
+            <column name="price" value="4,99"/>
+            <column name="image"
+                    value="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Kalenderlys-2-tsca.jpeg/1280px-Kalenderlys-2-tsca.jpeg"/>
+        </insert>
+        <insert tableName="products">
+            <column name="id" value="4"/>
+            <column name="amount" value="15"/>
+            <column name="name" value="Kerstpakket"/>
+            <column name="description" value="Kerstpakket met voor ieder wat wils!"/>
+            <column name="price" value="34,99"/>
+            <column name="image"
+                    value="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Kerstpakket_uitgepakt.jpg/1024px-Kerstpakket_uitgepakt.jpg"/>
+        </insert>
+        <insert tableName="products">
+            <column name="id" value="5"/>
+            <column name="amount" value="16"/>
+            <column name="name" value="Kerstverlichting"/>
+            <column name="description" value="Leuke kerstboom van lichtje! Leuk voor in de voortuin!"/>
+            <column name="price" value="39,99"/>
+            <column name="image"
+                    value="https://upload.wikimedia.org/wikipedia/commons/1/14/Christmas_lights_trees_and_snowman.jpg"/>
+        </insert>
+        <insert tableName="products">
+            <column name="id" value="6"/>
+            <column name="amount" value="25"/>
+            <column name="name" value="Kaarsen"/>
+            <column name="description" value="Leuke gele kaarsen, net even anders! Worden per 7 stuks verkocht!"/>
+            <column name="price" value="9,99"/>
+            <column name="image"
+                    value="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/7candles.JPG/800px-7candles.JPG"/>
+        </insert>
+        <insert tableName="products">
+            <column name="id" value="7"/>
+            <column name="amount" value="5"/>
+            <column name="name" value="Sneeuwpop"/>
+            <column name="description" value="Een leuke sneeuwpop! Het is natuurlijk veel leuker om er zelf een te maken!"/>
+            <column name="price" value="14,99"/>
+            <column name="image"
+                    value="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Schneemann_-_Snowman_in_Straubing%2C_Bavaria_14-12-31.jpg/800px-Schneemann_-_Snowman_in_Straubing%2C_Bavaria_14-12-31.jpg"/>
+        </insert>
+        <insert tableName="products">
+            <column name="id" value="8"/>
+            <column name="amount" value="50"/>
+            <column name="name" value="Kerstmuts"/>
+            <column name="description" value="Een kerstmuts om in de kerststemming te komen!"/>
+            <column name="price" value="3,99"/>
+            <column name="image"
+                    value="https://i.pinimg.com/236x/4b/24/9b/4b249b0dd46b287cde97f5d3287af38f.jpg"/>
+        </insert>
+        <insert tableName="products">
+            <column name="id" value="9"/>
+            <column name="amount" value="25"/>
+            <column name="name" value="Kerstsok"/>
+            <column name="description" value="Anders weet de kerstman niet waar de kadootjes achter gelaten moteten worden!"/>
+            <column name="price" value="4,99"/>
+            <column name="image"
+                    value="https://i.pinimg.com/originals/eb/46/85/eb468563be71ec65833387e3f7cb0ddd.jpg"/>
+        </insert>
+    </changeSet>
 </databaseChangeLog>
