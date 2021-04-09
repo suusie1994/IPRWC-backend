@@ -56,7 +56,7 @@ public class ProductResource {
 
     @POST
     @Path("/update")
-    @RolesAllowed(Role.ADMIN)
+//    @RolesAllowed({Role.ADMIN, Role.CUSTOMER})
     @JsonView(View.Public.class)
     @Timed
     @UnitOfWork

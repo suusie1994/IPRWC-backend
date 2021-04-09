@@ -28,7 +28,9 @@ public class ProductService {
     }
 
     public Product update(Product product) {
-        return dao.save(product);
+        Product oldProduct = dao.findById(product.getId());
+        oldProduct.setAmount(product.getAmount());
+        return dao.save(oldProduct);
     }
 
     public void remove(int id) {
