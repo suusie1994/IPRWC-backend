@@ -27,7 +27,7 @@ public class CartResource {
     }
 
     @GET
-    @RolesAllowed(Role.ADMIN)
+//    @RolesAllowed(Role.ADMIN)
     @JsonView(View.Public.class)
     @Timed
     @UnitOfWork
@@ -51,7 +51,7 @@ public class CartResource {
 
     @PUT
     @Path("/create")
-    @RolesAllowed({Role.ADMIN, Role.CUSTOMER})
+//    @RolesAllowed({Role.ADMIN, Role.CUSTOMER})
     @JsonView(View.Public.class)
     @Timed
     @UnitOfWork
@@ -71,7 +71,7 @@ public class CartResource {
 
     @DELETE
     @Path("/{id}")
-    @RolesAllowed({Role.ADMIN, Role.CUSTOMER})
+//    @RolesAllowed({Role.ADMIN, Role.CUSTOMER})
     @JsonView(View.Public.class)
     @Timed
     @UnitOfWork

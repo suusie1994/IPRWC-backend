@@ -293,4 +293,21 @@
                     value="https://i.pinimg.com/originals/eb/46/85/eb468563be71ec65833387e3f7cb0ddd.jpg"/>
         </insert>
     </changeSet>
+    <changeSet id="8" author="Suzanne">
+        <dropTable tableName="cart" />
+        <createTable tableName="cart">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="product_id" type="int">
+                <!-- -->
+            </column>
+            <column name="user_id" type="int">
+                <!-- -->
+            </column>
+            <column name="amount" type="int">
+                <!-- -->
+            </column>
+        </createTable>
+    </changeSet>
 </databaseChangeLog>

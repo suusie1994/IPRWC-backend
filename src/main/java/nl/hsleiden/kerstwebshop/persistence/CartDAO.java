@@ -20,7 +20,7 @@ public class CartDAO extends AbstractDAO<Cart> {
         return get(id);
     }
     public List<Cart> findByCustomerId(int customerId) {
-        return query("SELECT c FROM Cart c WHERE customer_id =" + customerId).list();
+        return query("SELECT c FROM Cart c WHERE user_id =" + customerId).list();
     }
 
     public List<Cart> findAll() {

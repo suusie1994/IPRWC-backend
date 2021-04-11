@@ -23,7 +23,7 @@ public class Cart implements Serializable {
     @JsonView(View.Public.class)
     private int productId;
 
-    @Column(name = "user_id", nullable = false)
+    @Column(name = "user_id", nullable = true)
     @JsonProperty
     @JsonView(View.Public.class)
     private int userId;
