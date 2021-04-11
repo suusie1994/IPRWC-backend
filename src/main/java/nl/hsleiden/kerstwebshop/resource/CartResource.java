@@ -33,8 +33,8 @@ public class CartResource {
     @UnitOfWork
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Cart[] getAll() {
-        return this.service.getAll();
+    public Cart[] getAllItemThatAreNotFromACustomer() {
+        return this.service.getAllItemThatAreNotFromACustomer();
     }
 
     @GET

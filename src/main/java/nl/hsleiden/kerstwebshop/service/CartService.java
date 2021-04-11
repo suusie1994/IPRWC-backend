@@ -20,8 +20,8 @@ public class CartService {
         return dao.findByCustomerId(customerId).toArray(new Cart[0]);
     }
 
-    public Cart[] getAll() {
-        return dao.findAll().toArray(new Cart[0]);
+    public Cart[] getAllItemThatAreNotFromACustomer() {
+        return dao.findByCustomerId(0).toArray(new Cart[0]);
     }
 
     public Cart create(Cart cart) {
