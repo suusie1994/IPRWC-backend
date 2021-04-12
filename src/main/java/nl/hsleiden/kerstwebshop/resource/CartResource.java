@@ -61,7 +61,7 @@ public class CartResource {
 
     @POST
     @Path("/update")
-    @RolesAllowed({Role.ADMIN, Role.CUSTOMER})
+//    @RolesAllowed({Role.ADMIN, Role.CUSTOMER})
     @JsonView(View.Public.class)
     @Timed
     @UnitOfWork

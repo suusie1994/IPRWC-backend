@@ -26,7 +26,6 @@ public class CartService {
 
     public Cart create(Cart cart) {
         Cart[] allFromCustomer = this.getAllFromCustomer(cart.getUserId());
-        System.out.println(allFromCustomer);
         if(allFromCustomer.length >0){
             for(int i =0; i<allFromCustomer.length; i++){
                 if(allFromCustomer[i].getProductId() == cart.getProductId()){
@@ -39,7 +38,9 @@ public class CartService {
     }
 
     public Cart update(Cart cart) {
-        return dao.save(cart);
+        Cart oldCart = dao.findById(cart.getId());
+        oldCart.setAmount(cart.getAmount());
+        return dao.save(oldCart);
     }
 
     public void remove(int id) {
