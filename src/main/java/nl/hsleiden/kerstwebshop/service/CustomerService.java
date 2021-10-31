@@ -29,7 +29,15 @@ public class CustomerService {
     }
 
     public Customer update(Customer customer) {
-        return dao.save(customer);
+        Customer updatedCustomer = getById(customer.getId());
+        updatedCustomer.setFirstname(customer.getFirstname());
+        updatedCustomer.setLastname(customer.getLastname());
+        updatedCustomer.setAddress(customer.getAddress());
+        updatedCustomer.setZipcode(customer.getZipcode());
+        updatedCustomer.setCity(customer.getCity());
+        updatedCustomer.setPhoneNumber(customer.getPhoneNumber());
+        updatedCustomer.setEmailAddress(customer.getEmailAddress());
+        return dao.save(updatedCustomer);
     }
 
     public void remove(int id) {

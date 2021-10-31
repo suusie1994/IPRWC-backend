@@ -37,6 +37,7 @@ public class UserResource {
 
     @GET
     @UnitOfWork
+    @RolesAllowed(Role.ADMIN)
     @JsonView(View.Public.class)
     public Collection<User> getUsers() {
         return this.service.getAll();
@@ -45,6 +46,7 @@ public class UserResource {
     @GET
     @Path("/me")
     @JsonProperty
+    @RolesAllowed({Role.ADMIN, Role.CUSTOMER})
     @JsonView(View.Protected.class)
     public User getMe(@Auth User user) {
         return user;

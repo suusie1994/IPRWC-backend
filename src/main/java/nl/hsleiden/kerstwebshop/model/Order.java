@@ -1,6 +1,5 @@
 package nl.hsleiden.kerstwebshop.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonView;
 import nl.hsleiden.kerstwebshop.View;
@@ -21,38 +20,31 @@ public class Order {
     @JsonView(View.Public.class)
     private int id;
 
-    @CreationTimestamp
     @Column(name = "date", nullable = false)
     @JsonProperty
     @JsonView(View.Public.class)
     private Timestamp date;
 
-//    @OneToOne
-//    @JoinColumn(name = "customer_id")
-//    @JsonProperty
-//    private Customer customer;
-
-    @ElementCollection
-    @CollectionTable(name = "order_details",
-            joinColumns = @JoinColumn(name = "order_id",
-                    referencedColumnName = "id")
-    )
+    @Column(name = "customer_id", nullable = true)
     @JsonProperty
     @JsonView(View.Public.class)
-    private List<OrderDetail> orderitems;
+    private int customerId;
+
+    @Column(name = "status")
+    @JsonProperty
+    @JsonView(View.Public.class)
+    private String status;
 
     public Order() {}
 
     public Order(
             int id,
             Timestamp date,
-//            Customer customer,
-            List <OrderDetail> orderitems
+            int customerId
     ) {
         this.id = id;
         this.date = date;
-//        this.customer = customer;
-        this.orderitems = orderitems;
+        this.customerId = customerId;
     }
 
     public int getId() {
@@ -71,19 +63,19 @@ public class Order {
         this.date = date;
     }
 
-//    public Customer getCustomer() {
-//        return customer;
-//    }
-//
-//    public void setCustomer(Customer customer) {
-//        this.customer = customer;
-//    }
-
-    public List <OrderDetail> getOrderitems() {
-        return orderitems;
+    public int getCustomerId() {
+        return customerId;
     }
 
-    public void setOrderitems(List <OrderDetail> orderitems) {
-        this.orderitems = orderitems;
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

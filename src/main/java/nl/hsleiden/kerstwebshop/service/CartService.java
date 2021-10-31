@@ -25,21 +25,26 @@ public class CartService {
     }
 
     public Cart create(Cart cart) {
+        System.out.println("cart:" + cart.getId());
         Cart[] allFromCustomer = this.getAllFromCustomer(cart.getUserId());
+        System.out.println(allFromCustomer);
         if(allFromCustomer.length >0){
             for(int i =0; i<allFromCustomer.length; i++){
                 if(allFromCustomer[i].getProductId() == cart.getProductId()){
                     allFromCustomer[i].setAmount(allFromCustomer[i].getAmount() + cart.getAmount());
+                    System.out.println("allFromCustomer[i]"+allFromCustomer[i].getId());
                     return dao.save(allFromCustomer[i]);
                 }
             }
         }
+        System.out.println("cart:" + cart.getId());
         return dao.save(cart);
     }
 
     public Cart update(Cart cart) {
         Cart oldCart = dao.findById(cart.getId());
         oldCart.setAmount(cart.getAmount());
+        oldCart.setUserId(cart.getUserId());
         return dao.save(oldCart);
     }
 

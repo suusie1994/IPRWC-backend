@@ -11,7 +11,7 @@ import org.hibernate.SessionFactory;
 public class GuiceModule extends AbstractModule {
 
     public static final HibernateBundle<ApiConfiguration> hibernateBundle = new HibernateBundle<ApiConfiguration>(
-            User.class, Cart.class, Customer.class, Order.class, Product.class) {
+            User.class, Cart.class, Customer.class, Order.class, Product.class, OrderDetail.class) {
 
         @Override
         public DataSourceFactory getDataSourceFactory(ApiConfiguration configuration) {

@@ -310,4 +310,47 @@
             </column>
         </createTable>
     </changeSet>
+    <changeSet id="9" author="Suzanne">
+        <addColumn tableName="order_details">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet id="10" author="Suzanne">
+        <modifyDataType tableName="orders" columnName="date" newDataType="timestamp" />
+    </changeSet>
+    <changeSet id="11" author="Suzanne">
+        <modifyDataType tableName="orders" columnName="date" newDataType="timestamp with time zone" />
+    </changeSet>
+    <changeSet id="12" author="Suzanne">
+        <addColumn tableName="order_details">
+            <column name="customerId" type="int">
+            </column>
+            <column name="firstname" type="varchar(255)">
+            </column>
+            <column name="lastname" type="varchar(255)">
+            </column>
+            <column name="emailAddress" type="varchar(255)">
+            </column>
+            <column name="address" type="varchar(255)">
+            </column>
+            <column name="zipcode" type="varchar(7)">
+            </column>
+            <column name="city" type="varchar(255)">
+            </column>
+            <column name="phoneNumber" type="varchar(15)">
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet id="13" author="Suzanne">
+        <renameColumn tableName="order_details" oldColumnName="customerId" newColumnName="customer_id" />
+        <renameColumn tableName="order_details" oldColumnName="emailAddress" newColumnName="emailaddress" />
+        <renameColumn tableName="order_details" oldColumnName="phoneNumber" newColumnName="phonenumber"/>
+    </changeSet>
+    <changeSet id="14" author="Suzanne">
+        <addColumn tableName="orders">
+            <column name="status" type="varchar(20)"></column>
+        </addColumn>
+    </changeSet>
 </databaseChangeLog>

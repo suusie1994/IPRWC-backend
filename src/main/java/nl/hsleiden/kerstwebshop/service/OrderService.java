@@ -32,7 +32,10 @@ public class OrderService {
     }
 
     public Order update(Order order) {
-        return dao.save(order);
+        Order oldOrder = getById(order.getId());
+        oldOrder.setCustomerId(order.getCustomerId());
+        oldOrder.setDate(order.getDate());
+        return dao.save(oldOrder);
     }
 
     public void remove(int id) {
