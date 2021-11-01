@@ -353,4 +353,10 @@
             <column name="status" type="varchar(20)"></column>
         </addColumn>
     </changeSet>
+    <changeSet id="15" author="Suzanne">
+        <addForeignKeyConstraint baseTableName="orders" baseColumnNames="customer_id"
+                                 constraintName="fk_orders_customer"
+                                 referencedTableName="customers"
+                                 referencedColumnNames="id"/>
+    </changeSet>
 </databaseChangeLog>
