@@ -4,8 +4,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonView;
 import nl.hsleiden.kerstwebshop.View;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -22,16 +24,19 @@ public class Order {
 
     @Column(name = "date", nullable = false)
     @JsonProperty
+    @NotNull
     @JsonView(View.Public.class)
     private Timestamp date;
 
     @Column(name = "customer_id", nullable = true)
     @JsonProperty
+    @NotNull
     @JsonView(View.Public.class)
     private int customerId;
 
     @Column(name = "status")
     @JsonProperty
+    @NotNull
     @JsonView(View.Public.class)
     private String status;
 

@@ -4,8 +4,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonView;
 import nl.hsleiden.kerstwebshop.View;
 import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "order_details")
@@ -20,63 +22,74 @@ public class OrderDetail {
 
     @Column(name = "order_id", nullable = false)
     @JsonProperty
+    @NotNull
     @JsonView(View.Public.class)
     private int orderId;
 
     @Column(name = "product_id", nullable = false)
     @JsonProperty
+    @NotNull
     @JsonView(View.Public.class)
     private int productId;
 
     @Column(name = "amount", nullable = false)
     @JsonProperty
+    @NotNull
     @JsonView(View.Public.class)
     private int amount;
 
     @Column(name = "customer_id")
     @JsonProperty
+    @NotNull
     @JsonView(View.Public.class)
     private int customerId;
 
     @Column(name = "firstname")
     @Length(min = 1, max = 255)
     @JsonProperty
+    @NotNull
     @JsonView(View.Public.class)
     private String firstname;
 
     @Column(name = "lastname")
     @Length(min = 1, max = 255)
     @JsonProperty
+    @NotNull
     @JsonView(View.Public.class)
     private String lastname;
 
     @Column(name = "emailAddress")
     @Length(min = 1, max = 255)
     @JsonProperty
+    @NotNull
     @JsonView(View.Public.class)
     private String emailAddress;
 
     @Column(name = "address")
     @Length(min = 1, max = 255)
     @JsonProperty
+    @NotNull
     @JsonView(View.Public.class)
     private String address;
 
     @Column(name = "zipcode")
     @Length(min = 1, max = 7)
     @JsonProperty
+    @NotNull
     @JsonView(View.Public.class)
     private String zipcode;
 
     @Column(name = "city")
     @Length(min = 1, max = 255)
     @JsonProperty
+    @NotNull
     @JsonView(View.Public.class)
     private String city;
 
     @Column(name = "phoneNumber")
     @Length(min = 1, max = 15)
     @JsonProperty
+    @NotNull
     @JsonView(View.Public.class)
     private String phoneNumber;
 

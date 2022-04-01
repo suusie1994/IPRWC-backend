@@ -3,8 +3,10 @@ package nl.hsleiden.kerstwebshop.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonView;
 import nl.hsleiden.kerstwebshop.View;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Entity
@@ -20,17 +22,20 @@ public class Cart implements Serializable {
 
     @Column(name = "product_id", nullable = false)
     @JsonProperty
+    @NotNull
     @JsonView(View.Public.class)
     private int productId;
 
     @Column(name = "user_id", nullable = true)
     @JsonProperty
+    @NotNull
     @JsonView(View.Public.class)
     private int userId;
 
     @Column(name = "amount", nullable = false)
     @JsonProperty
     @JsonView(View.Public.class)
+    @NotNull
     private int amount;
 
     public Cart() {}

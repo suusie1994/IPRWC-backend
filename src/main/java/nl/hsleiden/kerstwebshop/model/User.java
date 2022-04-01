@@ -5,8 +5,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonView;
 import org.hibernate.validator.constraints.Length;
 import nl.hsleiden.kerstwebshop.View;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +27,7 @@ public class User implements Principal {
     @Basic
     @Column(name = "username", nullable = false, unique = true)
     @Length(min = 1, max = 255)
+    @NotNull
     @JsonProperty
     @JsonView(View.Public.class)
     private String username;
@@ -32,25 +35,13 @@ public class User implements Principal {
     @Basic
     @Column(name = "password", nullable = false)
     @Length(min = 1, max = 255)
+    @NotNull
     @JsonProperty
     @JsonView(View.Internal.class)
     private String password;
 
-
     @ElementCollection(fetch = FetchType.EAGER)
     private List <String> roles;
-
-//    @OneToOne
-//    @JoinTable(name = "customers_users",
-//            joinColumns = { @JoinColumn(name = "user_id")},
-//            inverseJoinColumns = {@JoinColumn(name = "customer_id")})
-//    private Customer customer;
-
-//    @OneToMany
-//    @JoinTable(name = "cart",
-//            joinColumns = {@JoinColumn(name = "user_id")},
-//            inverseJoinColumns = {@JoinColumn(name = "id")})
-//    private List<Cart> cartItems;
 
     public User() {
         //
@@ -69,7 +60,6 @@ public class User implements Principal {
         return this.username;
     }
 
-    // The getters and setters for all the properties in the user table
     public void setUsername() {
         this.username = username;
     }
@@ -100,22 +90,6 @@ public class User implements Principal {
     public void setRoles(List <String> roles) {
         this.roles= roles;
     }
-
-//    public Customer getCustomer() {
-//        return customer;
-//    }
-//
-//    public void setCustomer(Customer customer) {
-//        this.customer = customer;
-//    }
-
-//    public List <Cart> getCartItems() {
-//        return cartItems;
-//    }
-//
-//    public void setCartItems(List <Cart> cartItems) {
-//        this.cartItems = cartItems;
-//    }
 
     public boolean hasRole(String roleName) {
 

@@ -7,6 +7,8 @@ import nl.hsleiden.kerstwebshop.View;
 import nl.hsleiden.kerstwebshop.model.Product;
 import nl.hsleiden.kerstwebshop.service.ProductService;
 import nl.hsleiden.kerstwebshop.shared.Role;
+import org.hibernate.annotations.Source;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
@@ -40,23 +42,24 @@ public class ProductResource {
     @JsonView(View.Public.class)
     @Timed
     @UnitOfWork
-    public Product getProductById(@PathParam("id") int id) {
+    public Product getProductById(@PathParam("id") @NotEmpty int id) {
         return this.service.getById(id);
     }
 
-    @PUT
+    @POST
     @Path("/create")
-    @RolesAllowed(Role.ADMIN)
+    @RolesAllowed({Role.ADMIN})
     @JsonView(View.Public.class)
     @Timed
     @UnitOfWork
     public Product create(@Valid Product product) {
+        System.out.println(product);
         return this.service.create(product);
     }
 
-    @POST
+    @PUT
     @Path("/update")
-//    @RolesAllowed({Role.ADMIN, Role.CUSTOMER})
+    @RolesAllowed({Role.ADMIN, Role.CUSTOMER})
     @JsonView(View.Public.class)
     @Timed
     @UnitOfWork
@@ -70,7 +73,7 @@ public class ProductResource {
     @JsonView(View.Public.class)
     @Timed
     @UnitOfWork
-    public void delete(@PathParam("id")int id) {
+    public void delete(@PathParam("id") @NotEmpty int id) {
         this.service.remove(id);
     }
 }
